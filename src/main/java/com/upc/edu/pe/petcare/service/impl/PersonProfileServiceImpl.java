@@ -42,10 +42,8 @@ public class PersonProfileServiceImpl extends CrudServiceImpl<PersonProfile, Lon
         */
         account.setRol(rolRepository.getById(2L));
         account.setSubscriptionPlan(subscriptionPlanRepository.getById(1L));
-        //Account accountDB = accountRepository.save(account);
 
         personProfile.setAccount(accountRepository.save(account));
-        //personProfileRepository.save(personProfile);
         return personProfileRepository.save(personProfile);
     }
 }
