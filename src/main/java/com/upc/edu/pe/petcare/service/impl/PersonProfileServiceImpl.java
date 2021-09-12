@@ -32,17 +32,8 @@ public class PersonProfileServiceImpl extends CrudServiceImpl<PersonProfile, Lon
 
     @Override
     public PersonProfile registerPersonProfile(PersonProfile personProfile, Account account) throws Exception {
-        /*Account accountNew = new Account();
-        accountNew.setEmail(personProfileRequest.getEmail());
-        accountNew.setPassword(personProfileRequest.getPassword());
-        accountNew.setRol(rolRepository.getById(2L));
-        accountNew.setSubscriptionPlan(subscriptionPlanRepository.getById(1L));
-
-        Account accountDB = accountRepository.save(accountNew);
-        */
         account.setRol(rolRepository.getById(2L));
         account.setSubscriptionPlan(subscriptionPlanRepository.getById(1L));
-
         personProfile.setAccount(accountRepository.save(account));
         return personProfileRepository.save(personProfile);
     }

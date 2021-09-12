@@ -35,8 +35,7 @@ public class PersonProfileController {
 
     @PostMapping()
     public ResponseEntity<PersonProfileResponse> createProfile( @Valid @RequestBody PersonProfileRequest personProfileRequest) throws Exception{
-        //PersonProfile profileNew = personProfileService.create(personProfileConverter.convertDTOToEntity(personProfileRequest));
-        PersonProfile profileNew = personProfileService.registerPersonProfile(personProfileConverter.convertDTOToEntity(personProfileRequest), accountConverter.convertDTOToEntity(personProfileRequest));
+        PersonProfile profileNew = personProfileService.registerPersonProfile(personProfileConverter.convertDTOToEntity(personProfileRequest), accountConverter.convertPersonProfileRequestDTOToEntity(personProfileRequest));
         return new ResponseEntity<>(personProfileConverter.convertEntityToDto(profileNew), HttpStatus.CREATED);
     }
 }

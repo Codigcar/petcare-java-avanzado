@@ -1,8 +1,11 @@
 package com.upc.edu.pe.petcare.util;
 
 import com.upc.edu.pe.petcare.dto.BusinessProfileRequest;
+import com.upc.edu.pe.petcare.dto.PersonProfileRequest;
 import com.upc.edu.pe.petcare.dto.response.BusinessProfileResponse;
+import com.upc.edu.pe.petcare.dto.response.PersonProfileResponse;
 import com.upc.edu.pe.petcare.model.BusinessProfile;
+import com.upc.edu.pe.petcare.model.PersonProfile;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
