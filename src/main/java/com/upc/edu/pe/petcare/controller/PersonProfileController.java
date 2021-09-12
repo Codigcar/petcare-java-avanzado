@@ -4,6 +4,7 @@ import com.upc.edu.pe.petcare.dto.PersonProfileRequest;
 import com.upc.edu.pe.petcare.dto.response.PersonProfileResponse;
 import com.upc.edu.pe.petcare.model.PersonProfile;
 import com.upc.edu.pe.petcare.service.PersonProfileService;
+import com.upc.edu.pe.petcare.util.AccountConverter;
 import com.upc.edu.pe.petcare.util.PersonProfileConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,6 +24,9 @@ public class PersonProfileController {
     @Autowired
     private PersonProfileConverter personProfileConverter;
 
+    @Autowired
+    private AccountConverter accountConverter;
+
     @GetMapping()
     public ResponseEntity<List<PersonProfileResponse>> getAllPersonProfiles() throws Exception{
         List<PersonProfile> personProfileList = personProfileService.getAll();
@@ -31,7 +35,8 @@ public class PersonProfileController {
 
     @PostMapping()
     public ResponseEntity<PersonProfile> createProfile( @Valid @RequestBody PersonProfileRequest personProfileRequest) throws Exception{
-        PersonProfile profileNew = personProfileService.create(personProfileConverter.convertDTOToEntity(personProfileRequest));
+        //PersonProfile profileNew = personProfileService.create(personProfileConverter.convertDTOToEntity(personProfileRequest));
+        PersonProfile profileNew = personProfileService.registerPersonProfile(personProfileConverter.convertDTOToEntity(personProfileRequest), accountConverter.convertDTOToEntity(personProfileRequest));
         return new ResponseEntity<>(profileNew, HttpStatus.CREATED);
     }
 }
