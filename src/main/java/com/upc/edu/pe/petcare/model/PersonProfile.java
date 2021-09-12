@@ -7,6 +7,7 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "person_profile")
@@ -32,6 +33,7 @@ public class PersonProfile {
     @Column(name = "age", nullable = false, length = 9)
     private String age;
 
+    @NotNull
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "account_id", referencedColumnName = "id")
     @OnDelete(action = OnDeleteAction.CASCADE)
