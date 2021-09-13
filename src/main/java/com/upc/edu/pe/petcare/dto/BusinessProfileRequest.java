@@ -25,5 +25,13 @@ public class BusinessProfileRequest {
     private String age;
 
     @NotNull
+    @Size(min=3, message="Password es minimo 3 caracteres")
+    private String password;
+
+    @NotNull
+    @Size(min=3, message="Email es minimo 3 caracteres")
+    private String email;
+    
+    @NotNull
     private Boolean owner;
 }
