@@ -1,5 +1,6 @@
 package com.upc.edu.pe.petcare.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,6 +9,7 @@ import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Entity
 @Table(name = "person_profile")
@@ -38,5 +40,9 @@ public class PersonProfile {
     @JoinColumn(name = "account_id", referencedColumnName = "id")
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Account account;
+
+    @OneToMany(mappedBy = "person", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnoreProperties("person")
+    private List<Pet> pets;
 
 }
