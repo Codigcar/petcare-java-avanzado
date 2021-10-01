@@ -1,9 +1,12 @@
 package com.upc.edu.pe.petcare.service;
 
 
+import com.upc.edu.pe.petcare.model.Account;
 import com.upc.edu.pe.petcare.model.PersonProfile;
 
-public interface AccountService extends CrudService<PersonProfile, Long> {
+import java.util.Optional;
 
-    PersonProfile registerPersonProfile(PersonProfile personProfile, Long accountId) throws Exception;
+public interface AccountService extends CrudService<Account, Long> {
+
+    PersonProfile findAccountByEmailAndPassword(String email, String password);
 }
