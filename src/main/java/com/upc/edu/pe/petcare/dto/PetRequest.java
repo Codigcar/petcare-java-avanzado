@@ -24,5 +24,7 @@ public class PetRequest {
 
     @NotNull
     private Boolean gender;
+
+    @NotNull
     private Long person_id;
 }

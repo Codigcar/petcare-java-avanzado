@@ -7,14 +7,9 @@ import com.upc.edu.pe.petcare.model.Pet;
 import com.upc.edu.pe.petcare.repository.AccountRepository;
 import com.upc.edu.pe.petcare.repository.GenericRepository;
 import com.upc.edu.pe.petcare.repository.PersonProfileRepository;
-import com.upc.edu.pe.petcare.repository.PetRepository;
 import com.upc.edu.pe.petcare.service.AccountService;
-import com.upc.edu.pe.petcare.service.PetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.Optional;
 
 @Service
 public class AccountServiceImpl extends CrudServiceImpl<Account, Long> implements AccountService {

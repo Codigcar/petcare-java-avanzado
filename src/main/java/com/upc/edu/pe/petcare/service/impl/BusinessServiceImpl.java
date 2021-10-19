@@ -9,7 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class BusinessServiceImpl extends CrudServiceImpl<BusinessProfile, Long> implements BusinessProfileService {
+public class
+BusinessServiceImpl extends CrudServiceImpl<BusinessProfile, Long> implements BusinessProfileService {
 
     @Autowired
     private BusinessProfileRepository businessProfileRepository;
