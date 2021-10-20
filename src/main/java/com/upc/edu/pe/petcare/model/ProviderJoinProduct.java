@@ -6,19 +6,19 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-@Table(name = "provider_join_product_type")
+@Table(name = "provider_join_products")
 @Data
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProviderJoinProductType {
+public class ProviderJoinProduct {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "product_type_id", nullable = false, foreignKey = @ForeignKey(name = "FK_providerjoinproducttype_producttype"))
-    private ProductType productType;
+    @JoinColumn(name = "product_id", nullable = false, foreignKey = @ForeignKey(name = "FK_providerjoinproducttype_product"))
+    private Product product;
 
     @ManyToOne
     @JoinColumn(name = "provider_id", nullable = false, foreignKey = @ForeignKey(name = "FK_providerjoinproducttype_provider"))
