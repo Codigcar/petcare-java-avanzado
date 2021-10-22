@@ -10,10 +10,13 @@ public class ProductRequest {
 
     @NotNull
     @Size(min=3, message="Nombre es minimo 3 caracteres")
-    private String name;
+    public String name;
 
     @NotNull
     @Size(min=3, message="Mínimin 3 caracteres")
-    private String description;
+    public String description;
+
+    @NotNull
+    public Long provider_id;
 
 }

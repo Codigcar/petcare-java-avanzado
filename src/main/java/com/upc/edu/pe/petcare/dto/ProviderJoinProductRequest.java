@@ -1,6 +1,7 @@
 package com.upc.edu.pe.petcare.dto;
 
 import com.upc.edu.pe.petcare.model.Pet;
+import com.upc.edu.pe.petcare.model.Product;
 import com.upc.edu.pe.petcare.model.Provider;
 import lombok.Data;
 
@@ -11,12 +12,12 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Data
-public class ProviderJoinProductTypeRequest {
+public class ProviderJoinProductRequest {
 
 
     @NotNull
-    private Pet productType;
+    private Long product_id;
 
     @NotNull
-    private Provider provider;
+    private Long provider_id;
 }

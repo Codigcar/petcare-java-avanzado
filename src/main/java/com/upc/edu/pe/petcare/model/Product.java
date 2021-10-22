@@ -23,11 +23,13 @@ public class Product {
     private String description;
 
     //RelationShips
+
     @ManyToOne(fetch = FetchType.LAZY,optional = false)
     @JoinColumn(name = "product_type_id",nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private ProductType productType;
+
 
 
 }

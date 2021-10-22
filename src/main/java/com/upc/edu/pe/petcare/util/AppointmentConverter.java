@@ -1,7 +1,10 @@
 package com.upc.edu.pe.petcare.util;
 
+import com.upc.edu.pe.petcare.dto.AppointmentRequest;
 import com.upc.edu.pe.petcare.dto.ProductRequest;
+import com.upc.edu.pe.petcare.dto.response.AppointmentResponse;
 import com.upc.edu.pe.petcare.dto.response.ProductResponse;
+import com.upc.edu.pe.petcare.model.Appointment;
 import com.upc.edu.pe.petcare.model.Product;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,19 +14,20 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Component
-public class ProductConverter {
+public class AppointmentConverter {
+
     @Autowired
     private ModelMapper modelMapper;
 
-    public Product convertDTOToEntity(ProductRequest request) {
-        return modelMapper.map(request, Product.class);
+    public Appointment convertDTOToEntity(AppointmentRequest request) {
+        return modelMapper.map(request, Appointment.class);
     }
 
-    public ProductResponse convertEntityToDTO(Product entity) {
-        return modelMapper.map(entity, ProductResponse.class);
+    public AppointmentResponse convertEntityToDTO(Appointment entity) {
+        return modelMapper.map(entity, AppointmentResponse.class);
     }
 
-    public List<ProductResponse> convertListEntityToDTO(List<Product> list) {
+    public List<AppointmentResponse> convertListEntityToDTO(List<Appointment> list) {
         return list.stream().map(this::convertEntityToDTO).collect(Collectors.toList());
     }
 

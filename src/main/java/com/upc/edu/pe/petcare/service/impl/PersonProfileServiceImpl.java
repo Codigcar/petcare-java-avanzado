@@ -1,10 +1,8 @@
 package com.upc.edu.pe.petcare.service.impl;
 
 
-import com.upc.edu.pe.petcare.dto.PersonProfileRequest;
 import com.upc.edu.pe.petcare.model.Account;
 import com.upc.edu.pe.petcare.model.PersonProfile;
-import com.upc.edu.pe.petcare.model.SubscriptionPlan;
 import com.upc.edu.pe.petcare.repository.*;
 import com.upc.edu.pe.petcare.service.PersonProfileService;
 import org.springframework.beans.factory.annotation.Autowired;

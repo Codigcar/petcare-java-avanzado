@@ -1,7 +1,7 @@
 package com.upc.edu.pe.petcare.util;
 
-import com.upc.edu.pe.petcare.dto.ProviderJoinProductTypeRequest;
-import com.upc.edu.pe.petcare.dto.response.ProviderJoinProductTypeResponse;
+import com.upc.edu.pe.petcare.dto.ProviderJoinProductRequest;
+import com.upc.edu.pe.petcare.dto.response.ProviderJoinProductResponse;
 import com.upc.edu.pe.petcare.model.ProviderJoinProduct;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,15 +15,15 @@ public class ProviderJoinProductTypeConverter {
     @Autowired
     private ModelMapper modelMapper;
 
-    public ProviderJoinProduct convertDTOToEntity(ProviderJoinProductTypeRequest request) {
+    public ProviderJoinProduct convertDTOToEntity(ProviderJoinProductRequest request) {
         return modelMapper.map(request, ProviderJoinProduct.class);
     }
 
-    public ProviderJoinProductTypeResponse convertEntityToDTO(ProviderJoinProduct entity) {
-        return modelMapper.map(entity, ProviderJoinProductTypeResponse.class);
+    public ProviderJoinProductResponse convertEntityToDTO(ProviderJoinProduct entity) {
+        return modelMapper.map(entity, ProviderJoinProductResponse.class);
     }
 
-    public List<ProviderJoinProductTypeResponse> convertListEntityToDTO(List<ProviderJoinProduct> list) {
+    public List<ProviderJoinProductResponse> convertListEntityToDTO(List<ProviderJoinProduct> list) {
         return list.stream().map(this::convertEntityToDTO).collect(Collectors.toList());
     }
 
