@@ -29,9 +29,6 @@ public class Product {
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private ProductType productType;
-
-
-
 }
 
 /*

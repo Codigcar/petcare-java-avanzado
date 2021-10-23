@@ -19,4 +19,7 @@ public class ProductRequest {
     @NotNull
     public Long provider_id;
 
+    @NotNull
+    public Long product_type_id;
+
 }

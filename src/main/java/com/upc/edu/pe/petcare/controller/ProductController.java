@@ -37,7 +37,7 @@ public class ProductController {
     @PostMapping()
     public ResponseEntity<ProductResponse> create(@Valid @RequestBody ProductRequest requestModel) throws Exception{
         Product newModel = productService
-                .registerProduct(productConverter.convertDTOToEntity(requestModel), requestModel.provider_id);
+                .registerProduct(productConverter.convertDTOToEntity(requestModel), requestModel.provider_id, requestModel.product_type_id);
         return new ResponseEntity<>(productConverter.convertEntityToDTO(newModel), HttpStatus.CREATED);
     }
 }
