@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 
 @Service
 public class ProductServiceImpl extends CrudServiceImpl<Product, Long> implements ProductService {
@@ -23,6 +25,7 @@ public class ProductServiceImpl extends CrudServiceImpl<Product, Long> implement
 
     @Autowired
     private ProviderJoinProductRepository providerJoinProductRepository;
+
     @Override
     protected GenericRepository<Product, Long> getRepository() {
         return productRepository;
@@ -36,16 +39,21 @@ public class ProductServiceImpl extends CrudServiceImpl<Product, Long> implement
            ProductType productType = productTypeRepository.getById(product_type_id);
 
            product.setProductType(productType);
-           Product productDB = productRepository.save(product);
-
-           ProviderJoinProduct providerJoinProductNew = new ProviderJoinProduct();
-           providerJoinProductNew.setProduct(productDB);
-           providerJoinProductNew.setProvider(providerDB);
-           providerJoinProductRepository.save(providerJoinProductNew);
-
-           return productDB;
+           product.setProvider(providerDB);
+           return productRepository.save(product);
        }catch ( Exception e ){
-           throw new Exception("Error al registrar producto: "+ e);
+           throw new Exception("Error al registrar producto: "+ e.getMessage());
        }
+    }
+
+    @Override
+    public List<Product> getProductByProviderIdAndProductTypeId(Long providerId, Long productTypeId) throws Exception {
+        try {
+
+            return productRepository.getProductByProviderIdAndProductTypeId(providerId, productTypeId);
+        }
+        catch ( Exception e ){
+            throw new Exception("Error getProductByProviderIdAndProductTypeId: "+ e.getMessage());
+        }
     }
 }

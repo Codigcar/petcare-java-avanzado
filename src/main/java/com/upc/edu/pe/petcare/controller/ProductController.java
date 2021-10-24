@@ -1,15 +1,10 @@
 package com.upc.edu.pe.petcare.controller;
 
 import com.upc.edu.pe.petcare.dto.ProductRequest;
-import com.upc.edu.pe.petcare.dto.ProductTypeRequest;
 import com.upc.edu.pe.petcare.dto.response.ProductResponse;
-import com.upc.edu.pe.petcare.dto.response.ProductTypeResponse;
 import com.upc.edu.pe.petcare.model.Product;
-import com.upc.edu.pe.petcare.model.ProductType;
 import com.upc.edu.pe.petcare.service.ProductService;
-import com.upc.edu.pe.petcare.service.ProductTypeService;
 import com.upc.edu.pe.petcare.util.ProductConverter;
-import com.upc.edu.pe.petcare.util.ProductTypeConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,15 +24,21 @@ public class ProductController {
     private ProductConverter productConverter;
 
     @GetMapping()
-    public ResponseEntity<List<ProductResponse>> getAll() throws Exception{
+    public ResponseEntity<List<ProductResponse>> getAll() throws Exception {
         List<Product> list = productService.getAll();
         return new ResponseEntity<>(productConverter.convertListEntityToDTO(list), HttpStatus.OK);
     }
 
     @PostMapping()
-    public ResponseEntity<ProductResponse> create(@Valid @RequestBody ProductRequest requestModel) throws Exception{
+    public ResponseEntity<ProductResponse> create(@Valid @RequestBody ProductRequest modelRequest) throws Exception {
         Product newModel = productService
-                .registerProduct(productConverter.convertDTOToEntity(requestModel), requestModel.provider_id, requestModel.product_type_id);
+                .registerProduct(productConverter.convertDTOToEntity(modelRequest), modelRequest.provider_id, modelRequest.product_type_id);
         return new ResponseEntity<>(productConverter.convertEntityToDTO(newModel), HttpStatus.CREATED);
     }
+    @GetMapping("/providerId/{providerId}/productTypeId/{productTypeId}")
+    public ResponseEntity<List<ProductResponse>> getByProviderIdAndProductTypeId(@PathVariable("providerId") Long providerId, @PathVariable("productTypeId") Long productTypeId) throws Exception {
+        List<Product> productList = productService.getProductByProviderIdAndProductTypeId(providerId, productTypeId);
+        return new ResponseEntity<>(productConverter.convertListEntityToDTO(productList), HttpStatus.OK);
+    }
+
 }

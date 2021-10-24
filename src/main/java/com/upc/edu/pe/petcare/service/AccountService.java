@@ -8,5 +8,5 @@ import java.util.Optional;
 
 public interface AccountService extends CrudService<Account, Long> {
 
-    PersonProfile findAccountByEmailAndPassword(String email, String password);
+    PersonProfile findAccountByEmailAndPassword(String email, String password) throws Exception;
 }

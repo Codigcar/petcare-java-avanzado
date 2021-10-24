@@ -11,6 +11,8 @@ import com.upc.edu.pe.petcare.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Objects;
+
 @Service
 public class AccountServiceImpl extends CrudServiceImpl<Account, Long> implements AccountService {
 
@@ -28,15 +30,18 @@ public class AccountServiceImpl extends CrudServiceImpl<Account, Long> implement
 
 
     @Override
-    public PersonProfile findAccountByEmailAndPassword(String email, String password) {
+    public PersonProfile findAccountByEmailAndPassword(String email, String password) throws Exception {
 
-        if (email == "" || password=="") {
-            new ModelNotFoundException("Los campos no pueden estar vacios");
+        if (Objects.equals(email, "") || Objects.equals(password, "")) {
+            throw new ModelNotFoundException("Los campos no pueden estar vacios");
         }
-
-        Account accountDB = accountRepository.findAccountByEmailAndPassword(email, password).orElseThrow(()-> new ModelNotFoundException("correo y/o contraseña incorrecta"));
-        PersonProfile personProfileDB = personProfileRepository.findPersonProfileByAccount_Id(accountDB.getId());
-        return personProfileDB;
+       try{
+           Account accountDB = accountRepository.findAccountByEmailAndPassword(email, password).orElseThrow(()-> new ModelNotFoundException("correo y/o contraseña incorrecta"));
+           PersonProfile personProfileDB = personProfileRepository.findPersonProfileByAccount_Id(accountDB.getId());
+           return personProfileDB;
+       }catch ( Exception e ){
+           throw new Exception("Error en el login: "+ e);
+       }
     }
 
 }

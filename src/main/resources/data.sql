@@ -1,5 +1,4 @@
 /*
-
 INSERT INTO rol(name) VALUES ('Admin');
 INSERT INTO rol(name) VALUES ('User');
 INSERT INTO rol(name) VALUES ('Veterinary');
