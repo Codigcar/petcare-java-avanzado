@@ -21,7 +21,7 @@ public class ProviderServiceImpl extends CrudServiceImpl<Provider, Long> impleme
     }
 
     @Override
-    public List<Provider> findByBusinessProfileId(Long id) throws Exception {
-        return providerRepository.findByBusinessProfileId(id);
+    public Provider findByBusinessProfileId(Long id) throws Exception {
+        return providerRepository.getById(id);
     }
 }

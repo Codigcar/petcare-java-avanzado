@@ -54,10 +54,10 @@ public class ProviderController {
     //    return new ResponseEntity<>(provider, HttpStatus.CREATED);
     //}
 
-    @GetMapping("/byBusiness/{id}")
-    public ResponseEntity<List<ProviderResponse>> findByBusinessProfileId(@PathVariable("id") Long id)throws Exception{
-        List<Provider> providers = new ArrayList<Provider>();
+    @GetMapping("/{id}")
+    public ResponseEntity<ProviderResponse> findByBusinessProfileId(@PathVariable("id") Long id)throws Exception{
+        Provider providers = new Provider();
         providers = providerService.findByBusinessProfileId(id);
-        return new ResponseEntity<>(providerConverter.convertListEntityToDTO(providers), HttpStatus.OK);
+        return new ResponseEntity<>(providerConverter.convertEntityToDTO(providers), HttpStatus.OK);
     }
 }
