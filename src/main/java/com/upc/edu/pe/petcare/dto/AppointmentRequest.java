@@ -1,10 +1,7 @@
 package com.upc.edu.pe.petcare.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.upc.edu.pe.petcare.model.BusinessProfile;
-import com.upc.edu.pe.petcare.model.PersonProfile;
-import com.upc.edu.pe.petcare.model.Pet;
-import com.upc.edu.pe.petcare.model.Product;
+import com.upc.edu.pe.petcare.model.*;
 import lombok.Data;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
@@ -27,30 +24,21 @@ public class AppointmentRequest {
     private String startTime;
 
     @NotNull
-    private String veterinaryName;
+    private int status;
 
     @NotNull
-    private String productTypeName;
+    private Long pet_id;
 
     @NotNull
-    private String productName;
+    private Long product_id;
 
     @NotNull
-    private String petName;
+    private Long businessProfile_id;
 
     @NotNull
-    private String PersonName;
+    private Long personProfile_id;
 
     @NotNull
-    private Pet pet;
-
-    @NotNull
-    private Product product;
-
-    @NotNull
-    private BusinessProfile businessProfile;
-
-    @NotNull
-    private PersonProfile personProfile;
+    private Long productType_id;
 
 }

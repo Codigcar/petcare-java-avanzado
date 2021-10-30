@@ -4,8 +4,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import java.sql.Blob;
 
 @Entity
 @Table(name = "provider")
@@ -36,7 +39,9 @@ public class Provider {
     @Column(name = "phone", nullable = false, length = 9)
     private String phone;
 
-    @Column(name = "description")
+    @Lob
+    @NotEmpty
+    @Type(type = "org.hibernate.type.TextType")
     private String description;
 
     @Column(name = "banner", length = 300)

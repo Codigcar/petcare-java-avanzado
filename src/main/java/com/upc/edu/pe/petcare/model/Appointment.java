@@ -29,23 +29,23 @@ public class Appointment {
     @Column(name = "start_time", nullable = false, length =10)
     private String startTime;
 
-    @Column(name = "veterinary_name", nullable = false)
-    private String veterinaryName;
+    //@Column(name = "veterinary_name", nullable = false)
+    //private String veterinaryName;
 
-    @Column(name = "product_type_name", nullable = false, length = 300)
-    private String productTypeName;
+    //@Column(name = "product_type_name", nullable = false, length = 300)
+    //private String productTypeName;
 
-    @Column(name = "product_name")
-    private String productName;
+    //@Column(name = "product_name")
+    //private String productName;
 
-    @Column(name = "pet_name")
-    private String petName;
+    //@Column(name = "pet_name")
+    //private String petName;
 
     @Column(name = "status")
     private int status;
 
-    @Column(name = "person_name")
-    private String PersonName;
+    //@Column(name = "person_name")
+    //private String PersonName;
 
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
@@ -72,5 +72,10 @@ public class Appointment {
     @JsonIgnore
     private PersonProfile personProfile;
 
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "product_type_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
+    private ProductType productType;
 
 }
