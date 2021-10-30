@@ -19,6 +19,7 @@ public class AppointmentResponse {
 
     private int status;
 
+
     private Pet pet;
 
     private Product product;
@@ -27,5 +28,6 @@ public class AppointmentResponse {
 
     private PersonProfile personProfile;
 
-    private ProductType productType;
+    //private ProductType productType;
 }
+

@@ -1,14 +1,13 @@
 package com.upc.edu.pe.petcare.service.impl;
 
+import com.upc.edu.pe.petcare.dto.AppointmentRequest;
 import com.upc.edu.pe.petcare.dto.response.AppointmentResponse;
-import com.upc.edu.pe.petcare.model.Appointment;
-import com.upc.edu.pe.petcare.model.Product;
-import com.upc.edu.pe.petcare.repository.AppointmentRepository;
-import com.upc.edu.pe.petcare.repository.GenericRepository;
-import com.upc.edu.pe.petcare.repository.PersonProfileRepository;
-import com.upc.edu.pe.petcare.repository.ProductRepository;
+import com.upc.edu.pe.petcare.exception.ModelNotFoundException;
+import com.upc.edu.pe.petcare.model.*;
+import com.upc.edu.pe.petcare.repository.*;
 import com.upc.edu.pe.petcare.service.AppointmentService;
 import com.upc.edu.pe.petcare.service.ProductService;
+import com.upc.edu.pe.petcare.util.AppointmentConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,26 +21,47 @@ public class AppointmentServiceImpl extends CrudServiceImpl<Appointment, Long> i
     private PersonProfileRepository personProfileRepository;
 
     @Autowired
-    private AppointmentRepository appointmentRepository;
+    private PetRepository petRepository;
 
     @Autowired
-    private AppointmentRepository appointmentRepository;
+    private BusinessProfileRepository businessProfileRepository;
 
     @Autowired
-    private AppointmentRepository appointmentRepository;
+    private ProductRepository productRepository;
 
     @Autowired
-    private AppointmentRepository appointmentRepository;
+    private ProductTypeRepository productTypeRepository;
+
+    @Autowired
+    private AppointmentConverter appointmentConverter;
 
     @Override
     protected GenericRepository<Appointment, Long> getRepository() {
         return appointmentRepository;
     }
 
-
-
     @Override
-    public AppointmentResponse register(Long personProfile_id, Long pet_id, Long businessProfile_id, Long product_id, Long productType_id) throws Exception {
-        return null;
+    public AppointmentResponse register(AppointmentRequest appointmentRequest) throws Exception {
+       try {
+           Appointment appointment = appointmentConverter.convertDTOToEntity(appointmentRequest);
+           PersonProfile personProfileDB = personProfileRepository.findById(appointmentRequest.getPersonProfile_id()).orElseThrow(()->new ModelNotFoundException("personProfile no encontrado"));
+           Pet petDB = petRepository.findById(appointmentRequest.getPet_id()).orElseThrow(()->new ModelNotFoundException("pet no encontrado"));
+           BusinessProfile businessProfileDB = businessProfileRepository.findById(appointmentRequest.getBusinessProfile_id()).orElseThrow(()-> new ModelNotFoundException("businessProfile no encontrado"));
+           Product productDB = productRepository.findById(appointmentRequest.getProduct_id()).orElseThrow(()-> new ModelNotFoundException("product no encontrado"));
+           ProductType productTypeDB = productTypeRepository.findById(appointmentRequest.getProductType_id()).orElseThrow(()-> new ModelNotFoundException("productType no encontrado"));
+
+           appointment.setPersonProfile(personProfileDB);
+           appointment.setPet(petDB);
+           appointment.setBusinessProfile(businessProfileDB);
+           appointment.setProduct(productDB);
+           appointment.setProductType(productTypeDB);
+
+           return appointmentConverter.convertEntityToDTO(appointmentRepository.save(appointment));
+
+       } catch ( Exception e ){
+           throw new Exception("Error en el register appointment: "+ e);
+       }
+
+
     }
 }

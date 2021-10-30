@@ -1,11 +1,8 @@
 package com.upc.edu.pe.petcare.util;
 
 import com.upc.edu.pe.petcare.dto.AppointmentRequest;
-import com.upc.edu.pe.petcare.dto.ProductRequest;
 import com.upc.edu.pe.petcare.dto.response.AppointmentResponse;
-import com.upc.edu.pe.petcare.dto.response.ProductResponse;
 import com.upc.edu.pe.petcare.model.Appointment;
-import com.upc.edu.pe.petcare.model.Product;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -27,8 +24,10 @@ public class AppointmentConverter {
         return modelMapper.map(entity, AppointmentResponse.class);
     }
 
-    public List<AppointmentResponse> convertListEntityToDTO(List<Appointment> list) {
-        return list.stream().map(this::convertEntityToDTO).collect(Collectors.toList());
+    public List<AppointmentResponse>  convertListEntityToDto(List<Appointment> list){
+        return list.stream()
+                .map(mapEntity -> convertEntityToDTO(mapEntity))
+                .collect(Collectors.toList());
     }
 
 
