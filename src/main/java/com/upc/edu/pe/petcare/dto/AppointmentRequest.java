@@ -17,28 +17,31 @@ import java.util.Date;
 @Data
 public class AppointmentRequest {
 
-    @NotNull
+    @NotNull(message = "fecha no puede ser vacio")
     private Date createdAt;
 
-    @NotNull
+    @NotNull(message = "tiempo no puede ser vacio")
     private String startTime;
 
-    @NotNull
+    @NotNull(message = "status no puede ser vacio")
     private int status;
 
-    @NotNull
+    @NotNull(message = "description no puede ser vacio")
+    private String description;
+
+    @NotNull(message = "pet_id no puede ser vacio")
     private Long pet_id;
 
-    @NotNull
+    @NotNull(message = "product_id no puede ser vacio")
     private Long product_id;
 
-    @NotNull
-    private Long businessProfile_id;
+    @NotNull(message = "provider_id no puede ser vacio")
+    private Long provider_id;
 
-    @NotNull
+    @NotNull(message = "personProfile_id no puede ser vacio")
     private Long personProfile_id;
 
-    @NotNull
+    @NotNull(message = "productType_id no puede ser vacio")
     private Long productType_id;
 
 }

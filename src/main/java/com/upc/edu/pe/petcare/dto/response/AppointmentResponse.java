@@ -1,12 +1,14 @@
 package com.upc.edu.pe.petcare.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.upc.edu.pe.petcare.model.*;
 import lombok.Data;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Data
@@ -19,15 +21,20 @@ public class AppointmentResponse {
 
     private int status;
 
+    private String description;
 
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Pet pet;
 
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Product product;
 
-    private BusinessProfile businessProfile;
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    private Provider provider;
 
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private PersonProfile personProfile;
-
-    //private ProductType productType;
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    private ProductType productType;
 }
 

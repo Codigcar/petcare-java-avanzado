@@ -24,7 +24,7 @@ public class AppointmentServiceImpl extends CrudServiceImpl<Appointment, Long> i
     private PetRepository petRepository;
 
     @Autowired
-    private BusinessProfileRepository businessProfileRepository;
+    private ProviderRepository providerRepository;
 
     @Autowired
     private ProductRepository productRepository;
@@ -46,13 +46,13 @@ public class AppointmentServiceImpl extends CrudServiceImpl<Appointment, Long> i
            Appointment appointment = appointmentConverter.convertDTOToEntity(appointmentRequest);
            PersonProfile personProfileDB = personProfileRepository.findById(appointmentRequest.getPersonProfile_id()).orElseThrow(()->new ModelNotFoundException("personProfile no encontrado"));
            Pet petDB = petRepository.findById(appointmentRequest.getPet_id()).orElseThrow(()->new ModelNotFoundException("pet no encontrado"));
-           BusinessProfile businessProfileDB = businessProfileRepository.findById(appointmentRequest.getBusinessProfile_id()).orElseThrow(()-> new ModelNotFoundException("businessProfile no encontrado"));
+           Provider providerDB = providerRepository.findById(appointmentRequest.getProvider_id()).orElseThrow(()-> new ModelNotFoundException("provider no encontrado"));
            Product productDB = productRepository.findById(appointmentRequest.getProduct_id()).orElseThrow(()-> new ModelNotFoundException("product no encontrado"));
            ProductType productTypeDB = productTypeRepository.findById(appointmentRequest.getProductType_id()).orElseThrow(()-> new ModelNotFoundException("productType no encontrado"));
 
            appointment.setPersonProfile(personProfileDB);
            appointment.setPet(petDB);
-           appointment.setBusinessProfile(businessProfileDB);
+           appointment.setProvider(providerDB);
            appointment.setProduct(productDB);
            appointment.setProductType(productTypeDB);
 
