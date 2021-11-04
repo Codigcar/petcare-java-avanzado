@@ -38,7 +38,8 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
                 .authorizeRequests()
                 .antMatchers("/v2/api-docs/**" ).permitAll()
                 .antMatchers("/v3/api-docs/**" ).permitAll()
-                .antMatchers("/api/v1/personprofiles/**" ).authenticated()
+                .antMatchers("/api/v1/**" ).authenticated();
+               /*
                 .antMatchers("/consultas/**" ).authenticated()
                 .antMatchers("/especialidades/**" ).authenticated()
                 .antMatchers("/examenes/**" ).authenticated()
@@ -47,7 +48,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
                 .antMatchers("/tokens/**" ).authenticated()
                 .antMatchers("/consultaexamenes/**" ).authenticated()
                 .antMatchers("/pacientes/**" ).authenticated();
-
+*/
     }
 
 }
