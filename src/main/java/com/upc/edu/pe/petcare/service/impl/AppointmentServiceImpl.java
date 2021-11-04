@@ -11,6 +11,8 @@ import com.upc.edu.pe.petcare.util.AppointmentConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class AppointmentServiceImpl extends CrudServiceImpl<Appointment, Long> implements AppointmentService {
 
@@ -64,4 +66,17 @@ public class AppointmentServiceImpl extends CrudServiceImpl<Appointment, Long> i
 
 
     }
+
+    @Override
+    public List<AppointmentResponse> deleteAppointments(Long appointmentId, Long personProfileId) throws Exception {
+        appointmentRepository.deleteById(appointmentId);
+        return getAllByPersonProfileId(personProfileId);
+    }
+
+    @Override
+    public List<AppointmentResponse> getAllByPersonProfileId(Long personProfileId) throws Exception {
+        List<Appointment> appointmentList = appointmentRepository.getAppointmentsByPersonProfileId(personProfileId);
+        return appointmentConverter.convertListEntityToDto(appointmentList);
+    }
+
 }
