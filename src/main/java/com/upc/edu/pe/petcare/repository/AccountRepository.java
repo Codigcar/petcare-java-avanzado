@@ -9,4 +9,7 @@ import java.util.Optional;
 public interface AccountRepository extends GenericRepository<Account,Long> {
     @Query("select a from Account  a where a.email = ?1 and a.password=?2")
     Optional<Account> findAccountByEmailAndPassword(String email, String password);
+
+    @Query("select c from Account c where c.email = ?1 " )
+    Account findOneByEmail(String email);
 }

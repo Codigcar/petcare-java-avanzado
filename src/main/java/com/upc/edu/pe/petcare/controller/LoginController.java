@@ -24,9 +24,11 @@ public class LoginController {
     @Autowired
     private AccountService accountService;
 
+    /*
     @PostMapping()
     public ResponseEntity<PersonProfile> verifyAccount(@Valid @RequestBody Account account) throws Exception{
         PersonProfile personProfileDB = accountService.findAccountByEmailAndPassword(account.getEmail(), account.getPassword());
         return new ResponseEntity<>(personProfileDB, HttpStatus.CREATED);
     }
+     */
 }
