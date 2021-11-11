@@ -3,18 +3,31 @@ package com.upc.edu.pe.petcare.dto.response;
 import lombok.Data;
 
 import javax.persistence.Column;
+import javax.validation.constraints.NotNull;
 
 @Data
 public class PetResponse {
-    private Long id;
+     Long id;
 
-    private String name;
+     String name;
 
-    private Integer age;
+     Integer age;
 
-    private String breed;
+     String breed;
 
-    private String photo;
+     String photo;
 
-    private Boolean gender;
+     Boolean gender;
+
+     String weight;
+
+     String color;
+
+     String eyeColor;
+
+     String body;
+
+     String chest;
+
+     String neck;
 }

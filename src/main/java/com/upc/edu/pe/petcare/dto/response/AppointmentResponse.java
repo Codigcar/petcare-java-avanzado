@@ -34,6 +34,7 @@ public class AppointmentResponse {
 
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private PersonProfile personProfile;
+
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private ProductType productType;
 }

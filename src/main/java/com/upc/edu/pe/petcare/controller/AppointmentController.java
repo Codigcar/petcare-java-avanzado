@@ -35,6 +35,11 @@ public class AppointmentController {
         return new ResponseEntity<>(appointmentService.getAllByPersonProfileId(id), HttpStatus.OK);
     }
 
+    @GetMapping("/personProfile/{personProfileId}/pet/{petId}/status/{status}")
+    public ResponseEntity<List<AppointmentResponse>> getAllByPersonProfileIdAndPetId(@PathVariable("personProfileId") Long personProfileId, @PathVariable("petId") Long petId,@PathVariable("status") int status ) throws Exception {
+        return new ResponseEntity<>(appointmentService.getAllByPersonProfileIdAndPetId(personProfileId,petId,status), HttpStatus.OK);
+    }
+
     @PostMapping()
     public ResponseEntity<AppointmentResponse> create(@Valid @RequestBody AppointmentRequest requestModel) throws Exception {
         AppointmentResponse newModel = appointmentService

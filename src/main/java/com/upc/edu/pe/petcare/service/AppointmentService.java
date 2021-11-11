@@ -13,4 +13,6 @@ public interface AppointmentService extends CrudService<Appointment, Long> {
     AppointmentResponse register(AppointmentRequest appointmentRequest) throws Exception;
     List<AppointmentResponse> deleteAppointments(Long appointmentId,  Long personProfileId) throws Exception;
     List<AppointmentResponse> getAllByPersonProfileId(Long personProfileId) throws Exception;
+    List<AppointmentResponse> getAllByPersonProfileIdAndPetId(Long personProfileId,Long petId, int status) throws Exception;
+
 }

@@ -79,4 +79,13 @@ public class AppointmentServiceImpl extends CrudServiceImpl<Appointment, Long> i
         return appointmentConverter.convertListEntityToDto(appointmentList);
     }
 
+
+
+    @Override
+    public List<AppointmentResponse> getAllByPersonProfileIdAndPetId(Long personProfileId, Long petId, int status) throws Exception {
+        List<Appointment> appointmentList = appointmentRepository.getAppointmentsByPersonProfileIdAndPetId(personProfileId,petId,status);
+        return appointmentConverter.convertListEntityToDto(appointmentList);
+
+    }
+
 }
