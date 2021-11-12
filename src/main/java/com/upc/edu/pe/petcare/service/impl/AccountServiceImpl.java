@@ -73,4 +73,9 @@ public class AccountServiceImpl extends CrudServiceImpl<Account, Long> implement
            throw new Exception("Error en el login: "+ e);
        }
     }
+
+    @Override
+    public AccountResponse findOneByEmail(String email) throws Exception {
+        return accountConverter.convertEntityToDTO(accountRepository.findOneByEmail(email));
+    }
 }

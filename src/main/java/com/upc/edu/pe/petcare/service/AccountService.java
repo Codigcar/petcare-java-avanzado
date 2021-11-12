@@ -11,5 +11,5 @@ import java.util.Optional;
 public interface AccountService extends CrudService<Account, Long> {
 
    AccountResponse findAccountByEmailAndPassword(String email, String password) throws Exception;
-
+   AccountResponse findOneByEmail(String email) throws Exception;
 }

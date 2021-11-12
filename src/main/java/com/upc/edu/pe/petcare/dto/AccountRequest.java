@@ -13,6 +13,6 @@ public class AccountRequest {
     @NotNull(message = "email no puede ser vacio")
     private String email;
 
-    @NotNull(message = "password no puede ser vacio")
+    //@NotNull(message = "password no puede ser vacio")
     private String password;
 }
