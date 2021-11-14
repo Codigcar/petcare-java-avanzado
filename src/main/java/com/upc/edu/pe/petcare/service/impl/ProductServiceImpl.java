@@ -23,9 +23,6 @@ public class ProductServiceImpl extends CrudServiceImpl<Product, Long> implement
     @Autowired
     private ProductTypeRepository productTypeRepository;
 
-    @Autowired
-    private ProviderJoinProductRepository providerJoinProductRepository;
-
     @Override
     protected GenericRepository<Product, Long> getRepository() {
         return productRepository;

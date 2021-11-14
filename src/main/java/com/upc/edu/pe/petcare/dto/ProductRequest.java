@@ -22,4 +22,9 @@ public class ProductRequest {
     @NotNull(message = "product_type_id no puede estar vacio")
     public Long product_type_id;
 
+    @NotNull(message = "image no puede estar vacio")
+    public String image;
+
+
+
 }

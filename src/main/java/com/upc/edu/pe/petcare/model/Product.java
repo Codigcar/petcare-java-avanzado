@@ -22,6 +22,8 @@ public class Product {
 
     private String description;
 
+    private String image;
+
     //RelationShips
 
     @ManyToOne(fetch = FetchType.LAZY,optional = false)
