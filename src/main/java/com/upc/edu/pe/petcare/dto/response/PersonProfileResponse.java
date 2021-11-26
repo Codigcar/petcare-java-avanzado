@@ -6,13 +6,13 @@ import lombok.Data;
 @Data
 public class PersonProfileResponse {
 
-    private Long id;
+     Long id;
 
-    private String name;
+     String name;
 
-    private String dni;
+     String dni;
 
-    private String phone;
+     String phone;
 
-    private String age;
+     String age;
 }

@@ -12,19 +12,20 @@ import java.util.stream.Collectors;
 
 @Component
 public class PetConverter {
-
     @Autowired
     private ModelMapper modelMapper;
 
-    public Pet convertDTOToEntity(PetRequest petRequest){
+    public Pet convertDTOToEntity(PetRequest petRequest) {
         return modelMapper.map(petRequest, Pet.class);
     }
 
-    public PetResponse convertEntityToDTO(Pet entity){
+    public PetResponse convertEntityToDTO(Pet entity) {
         return modelMapper.map(entity, PetResponse.class);
     }
 
-    public List<PetResponse> convertListEntityToDTO(List<Pet> pets){
+    public List<PetResponse> convertListEntityToDTO(List<Pet> pets) {
         return pets.stream().map(mapEntity -> convertEntityToDTO(mapEntity)).collect(Collectors.toList());
     }
+
+
 }

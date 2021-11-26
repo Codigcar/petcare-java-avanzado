@@ -5,6 +5,8 @@ import lombok.Data;
 @Data
 public class ProviderResponse {
 
+    Long id;
+
     private String businessName;
 
     private String region;

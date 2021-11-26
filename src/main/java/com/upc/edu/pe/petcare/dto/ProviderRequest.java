@@ -29,11 +29,13 @@ public class ProviderRequest {
     @Email(message = "Email formato incorrecto")
     private String email;
 
+    @NotNull(message = "description no puede ser vacio")
+    private String description;
+
     @NotNull
     @Size(min=9, max = 9, message="Telefono debe de tener 9 caracteres")
     private String phone;
 
-    private String description;
     private String banner;
     private Long business_profile_id;
 }

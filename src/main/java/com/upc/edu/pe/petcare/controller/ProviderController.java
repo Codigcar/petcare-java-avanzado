@@ -1,12 +1,9 @@
 package com.upc.edu.pe.petcare.controller;
 
-import com.upc.edu.pe.petcare.dto.PetRequest;
 import com.upc.edu.pe.petcare.dto.ProviderRequest;
-import com.upc.edu.pe.petcare.dto.response.PetResponse;
 import com.upc.edu.pe.petcare.dto.response.ProviderResponse;
 import com.upc.edu.pe.petcare.exception.ModelNotFoundException;
 import com.upc.edu.pe.petcare.model.BusinessProfile;
-import com.upc.edu.pe.petcare.model.PersonProfile;
 import com.upc.edu.pe.petcare.model.Pet;
 import com.upc.edu.pe.petcare.model.Provider;
 import com.upc.edu.pe.petcare.service.BusinessProfileService;
@@ -57,10 +54,10 @@ public class ProviderController {
     //    return new ResponseEntity<>(provider, HttpStatus.CREATED);
     //}
 
-    @GetMapping("/byBusiness/{id}")
-    public ResponseEntity<List<ProviderResponse>> findByBusinessProfileId(@PathVariable("id") Long id)throws Exception{
-        List<Provider> providers = new ArrayList<Provider>();
+    @GetMapping("/{id}")
+    public ResponseEntity<ProviderResponse> findByBusinessProfileId(@PathVariable("id") Long id)throws Exception{
+        Provider providers = new Provider();
         providers = providerService.findByBusinessProfileId(id);
-        return new ResponseEntity<>(providerConverter.convertListEntityToDTO(providers), HttpStatus.OK);
+        return new ResponseEntity<>(providerConverter.convertEntityToDTO(providers), HttpStatus.OK);
     }
 }

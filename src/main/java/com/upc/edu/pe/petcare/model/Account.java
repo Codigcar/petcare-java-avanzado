@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Table(name = "account")
 @Data
@@ -30,5 +31,7 @@ public class Account {
     @JoinColumn(name = "subscription_plan_id", nullable = false, foreignKey = @ForeignKey(name = "FK_account_subscriptionplan"))
     private SubscriptionPlan subscriptionPlan;
 
+    //@OneToMany(mappedBy = "account", cascade = CascadeType.ALL, orphanRemoval = true)
+    //private List<PersonProfile> personProfileList;
 
 }

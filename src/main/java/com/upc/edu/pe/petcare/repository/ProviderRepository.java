@@ -5,5 +5,4 @@ import com.upc.edu.pe.petcare.model.Provider;
 import java.util.List;
 
 public interface ProviderRepository extends GenericRepository<Provider, Long> {
-    List<Provider> findByBusinessProfileId(Long id) throws Exception;
 }

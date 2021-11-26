@@ -38,13 +38,13 @@ public class PetController {
     }
 
     @PostMapping()
-    public ResponseEntity<Pet> createPet(@Valid @RequestBody PetRequest petRequest) throws Exception{
+    public ResponseEntity<PetResponse> createPet(@Valid @RequestBody PetRequest petRequest) throws Exception{
         PersonProfile personProfile = personProfileService.getById(petRequest.getPerson_id())
                 .orElseThrow(()-> new ModelNotFoundException(ExceptionMessageEnum.MODEL_NOT_FOUND.getValue()));
         Pet pet = petConverter.convertDTOToEntity(petRequest);
         pet.setPerson(personProfile);
         Pet newPet = petService.create(pet);
-        return new ResponseEntity<>(newPet, HttpStatus.CREATED);
+        return new ResponseEntity<>(petConverter.convertEntityToDTO(newPet) , HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")

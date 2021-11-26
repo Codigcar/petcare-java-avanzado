@@ -33,6 +33,24 @@ public class Pet {
     @Column(name = "gender", nullable = false)
     private Boolean gender;
 
+    @Column(name = "weight", nullable = false)
+    private String weight;
+
+    @Column(name = "color", nullable = false)
+    private String color;
+
+    @Column(name = "eye_color", nullable = false)
+    private String eyeColor;
+
+    @Column(name = "body", nullable = false)
+    private String body;
+
+    @Column(name = "chest", nullable = false)
+    private String chest;
+
+    @Column(name = "neck", nullable = false)
+    private String neck;
+
     @ManyToOne()
     @JoinColumn(name = "person_id", nullable = false, foreignKey = @ForeignKey(name = "FK_pet_person"))
     @JsonIgnoreProperties("pets")
