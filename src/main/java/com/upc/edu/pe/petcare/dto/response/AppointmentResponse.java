@@ -23,6 +23,8 @@ public class AppointmentResponse {
 
     private String description;
 
+    private String mes;
+
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Pet pet;
 

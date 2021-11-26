@@ -29,6 +29,10 @@ public class AppointmentRequest {
     @NotNull(message = "description no puede ser vacio")
     private String description;
 
+    @NotNull(message = "mes no puede ser vacio")
+    private String mes;
+
+
     @NotNull(message = "pet_id no puede ser vacio")
     private Long pet_id;
 

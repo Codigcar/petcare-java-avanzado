@@ -31,6 +31,9 @@ public class Appointment {
     @Column(name = "start_time", nullable = false, length =10)
     private String startTime;
 
+    @Column(name = "mes", nullable = false, length =10)
+    private String mes;
+
     //@Column(name = "veterinary_name", nullable = false)
     //private String veterinaryName;
 

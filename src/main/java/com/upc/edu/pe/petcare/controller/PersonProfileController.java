@@ -46,4 +46,5 @@ public class PersonProfileController {
                         accountConverter.convertPersonProfileRequestDTOToEntity(personProfileRequest));
         return new ResponseEntity<>(personProfileConverter.convertEntityToDto(profileNew), HttpStatus.CREATED);
     }
+
 }
